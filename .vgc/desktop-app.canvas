@@ -1,0 +1,428 @@
+{
+  "vv": {
+    "name": "Desktop App Architecture",
+    "version": "1.0.0",
+    "nodeTypes": {
+      "UI": {
+        "description": "User interface components",
+        "icon": "🖥️",
+        "color": "#3B82F6"
+      },
+      "Context": {
+        "description": "State management and context",
+        "icon": "🔄",
+        "color": "#10B981"
+      },
+      "Component": {
+        "description": "Reusable UI components",
+        "icon": "🧩",
+        "color": "#8B5CF6"
+      },
+      "Page": {
+        "description": "Page and layout components",
+        "icon": "📄",
+        "color": "#F59E0B"
+      },
+      "Terminal": {
+        "description": "Terminal and command line interface",
+        "icon": "💻",
+        "color": "#EF4444"
+      },
+      "Session": {
+        "description": "Session management",
+        "icon": "🔄",
+        "color": "#059669"
+      },
+      "SDK": {
+        "description": "SDK and API integration",
+        "icon": "🔌",
+        "color": "#6366F1"
+      },
+      "Sync": {
+        "description": "Data synchronization",
+        "icon": "🔄",
+        "color": "#7C3AED"
+      },
+      "Layout": {
+        "description": "Layout and positioning",
+        "icon": "📐",
+        "color": "#EA580C"
+      }
+    },
+    "edgeTypes": {
+      "Renders": {
+        "description": "Rendering relationship",
+        "icon": "🎨",
+        "color": "#3B82F6"
+      },
+      "Manages": {
+        "description": "Management relationship",
+        "icon": "👤",
+        "color": "#DC2626"
+      },
+      "Provides": {
+        "description": "Provides or supplies",
+        "icon": "⬇️",
+        "color": "#7C3AED"
+      },
+      "Connects": {
+        "description": "Connection or communication",
+        "icon": "🔗",
+        "color": "#059669"
+      },
+      "Syncs": {
+        "description": "Synchronization relationship",
+        "icon": "🔄",
+        "color": "#10B981"
+      },
+      "Contains": {
+        "description": "Contains or includes",
+        "icon": "📦",
+        "color": "#F59E0B"
+      }
+    }
+  },
+  "nodes": [
+    {
+      "id": "app-root",
+      "type": "text",
+      "x": 354,
+      "y": -313,
+      "width": 180,
+      "height": 80,
+      "text": "App Root\n🖥️\nMain application entry point",
+      "vv": {
+        "nodeType": "UI",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "router",
+      "type": "text",
+      "x": 598,
+      "y": -155,
+      "width": 180,
+      "height": 80,
+      "text": "Router\n🔄\nSolidJS routing system",
+      "vv": {
+        "nodeType": "UI",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "layout-page",
+      "type": "text",
+      "x": 598,
+      "y": -14,
+      "width": 180,
+      "height": 80,
+      "text": "Layout Page\n📄\nMain layout component",
+      "vv": {
+        "nodeType": "Page",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "global-sdk-context",
+      "type": "text",
+      "x": 108,
+      "y": -150,
+      "width": 180,
+      "height": 80,
+      "text": "Global SDK Context\n🔌\nSDK integration context",
+      "vv": {
+        "nodeType": "Context",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "global-sync-context",
+      "type": "text",
+      "x": 354,
+      "y": -152,
+      "width": 180,
+      "height": 80,
+      "text": "Global Sync Context\n🔄\nGlobal data synchronization",
+      "vv": {
+        "nodeType": "Context",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "layout-context",
+      "type": "text",
+      "x": 1034,
+      "y": 133,
+      "width": 180,
+      "height": 80,
+      "text": "Layout Context\n📐\nLayout state management",
+      "vv": {
+        "nodeType": "Context",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "session-context",
+      "type": "text",
+      "x": 599,
+      "y": 300,
+      "width": 180,
+      "height": 80,
+      "text": "Session Context\n🔄\nSession state management",
+      "vv": {
+        "nodeType": "Context",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "session-page",
+      "type": "text",
+      "x": 599,
+      "y": 136,
+      "width": 180,
+      "height": 80,
+      "text": "Session Page\n📄\nMain session interface",
+      "vv": {
+        "nodeType": "Page",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "terminal-component",
+      "type": "text",
+      "x": 817,
+      "y": 298,
+      "width": 180,
+      "height": 80,
+      "text": "Terminal Component\n💻\nGhostty terminal integration",
+      "vv": {
+        "nodeType": "Terminal",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "file-tree-component",
+      "type": "text",
+      "x": 1034,
+      "y": 296,
+      "width": 180,
+      "height": 80,
+      "text": "File Tree Component\n🧩\nFile system navigation",
+      "vv": {
+        "nodeType": "Component",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "prompt-input-component",
+      "type": "text",
+      "x": 160,
+      "y": 460,
+      "width": 180,
+      "height": 80,
+      "text": "Prompt Input\n🧩\nUser input component",
+      "vv": {
+        "nodeType": "Component",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "sdk-client",
+      "type": "text",
+      "x": 108,
+      "y": -6,
+      "width": 180,
+      "height": 80,
+      "text": "SDK Client\n🔌\nOpenCode SDK integration",
+      "vv": {
+        "nodeType": "SDK",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "sync-engine",
+      "type": "text",
+      "x": 355,
+      "y": -11,
+      "width": 180,
+      "height": 80,
+      "text": "Sync Engine\n🔄\nReal-time data sync",
+      "vv": {
+        "nodeType": "Sync",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "pty-websocket",
+      "type": "text",
+      "x": 819,
+      "y": 465,
+      "width": 180,
+      "height": 80,
+      "text": "PTY WebSocket\n💻\nTerminal WebSocket connection",
+      "vv": {
+        "nodeType": "Terminal",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "local-storage",
+      "type": "text",
+      "x": 598,
+      "y": 468,
+      "width": 180,
+      "height": 80,
+      "text": "Local Storage\n📦\nPersistent state storage",
+      "vv": {
+        "nodeType": "Context",
+        "shape": "rectangle"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "root-renders-router",
+      "fromNode": "app-root",
+      "toNode": "router",
+      "text": "Renders 🎨",
+      "vv": {
+        "edgeType": "Renders"
+      }
+    },
+    {
+      "id": "router-renders-layout",
+      "fromNode": "router",
+      "toNode": "layout-page",
+      "text": "Renders 🎨",
+      "vv": {
+        "edgeType": "Renders"
+      }
+    },
+    {
+      "id": "root-provides-global-sdk",
+      "fromNode": "app-root",
+      "toNode": "global-sdk-context",
+      "text": "Provides ⬇️",
+      "vv": {
+        "edgeType": "Provides"
+      }
+    },
+    {
+      "id": "root-provides-global-sync",
+      "fromNode": "app-root",
+      "toNode": "global-sync-context",
+      "text": "Provides ⬇️",
+      "vv": {
+        "edgeType": "Provides"
+      }
+    },
+    {
+      "id": "layout-provides-layout-context",
+      "fromNode": "layout-page",
+      "toNode": "layout-context",
+      "text": "Provides ⬇️",
+      "vv": {
+        "edgeType": "Provides"
+      }
+    },
+    {
+      "id": "layout-renders-session",
+      "fromNode": "layout-page",
+      "toNode": "session-page",
+      "text": "Renders 🎨",
+      "vv": {
+        "edgeType": "Renders"
+      }
+    },
+    {
+      "id": "session-provides-session-context",
+      "fromNode": "session-page",
+      "toNode": "session-context",
+      "text": "Provides ⬇️",
+      "vv": {
+        "edgeType": "Provides"
+      }
+    },
+    {
+      "id": "session-renders-terminal",
+      "fromNode": "session-page",
+      "toNode": "terminal-component",
+      "text": "Renders 🎨",
+      "vv": {
+        "edgeType": "Renders"
+      }
+    },
+    {
+      "id": "session-renders-file-tree",
+      "fromNode": "session-page",
+      "toNode": "file-tree-component",
+      "text": "Renders 🎨",
+      "vv": {
+        "edgeType": "Renders"
+      }
+    },
+    {
+      "id": "session-renders-prompt",
+      "fromNode": "session-page",
+      "toNode": "prompt-input-component",
+      "text": "Renders 🎨",
+      "vv": {
+        "edgeType": "Renders"
+      }
+    },
+    {
+      "id": "global-sdk-connects-sdk",
+      "fromNode": "global-sdk-context",
+      "toNode": "sdk-client",
+      "text": "Connects 🔗",
+      "vv": {
+        "edgeType": "Connects"
+      }
+    },
+    {
+      "id": "global-sync-uses-sync",
+      "fromNode": "global-sync-context",
+      "toNode": "sync-engine",
+      "text": "Uses ⬇️",
+      "vv": {
+        "edgeType": "Provides"
+      }
+    },
+    {
+      "id": "terminal-connects-pty",
+      "fromNode": "terminal-component",
+      "toNode": "pty-websocket",
+      "text": "Connects 🔗",
+      "vv": {
+        "edgeType": "Connects"
+      }
+    },
+    {
+      "id": "session-syncs-storage",
+      "fromNode": "session-context",
+      "toNode": "local-storage",
+      "text": "Syncs 🔄",
+      "vv": {
+        "edgeType": "Syncs"
+      }
+    },
+    {
+      "id": "layout-manages-sidebar",
+      "fromNode": "layout-context",
+      "toNode": "file-tree-component",
+      "text": "Manages 👤",
+      "vv": {
+        "edgeType": "Manages"
+      }
+    },
+    {
+      "id": "session-contains-components",
+      "fromNode": "session-context",
+      "toNode": "prompt-input-component",
+      "text": "Contains 📦",
+      "vv": {
+        "edgeType": "Contains"
+      }
+    }
+  ]
+}

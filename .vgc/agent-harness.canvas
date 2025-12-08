@@ -1,0 +1,335 @@
+{
+  "vv": {
+    "name": "Agent Harness Architecture",
+    "version": "1.0.0",
+    "nodeTypes": {
+      "Agent": {
+        "description": "AI agent implementations",
+        "icon": "🤖",
+        "color": "#10B981"
+      },
+      "Session": {
+        "description": "Session management and state",
+        "icon": "🔄",
+        "color": "#3B82F6"
+      },
+      "Provider": {
+        "description": "Model and service providers",
+        "icon": "🔌",
+        "color": "#8B5CF6"
+      },
+      "Tool": {
+        "description": "Agent tools and capabilities",
+        "icon": "🛠️",
+        "color": "#F59E0B"
+      },
+      "Permission": {
+        "description": "Permission and access control",
+        "icon": "🔐",
+        "color": "#EF4444"
+      },
+      "Config": {
+        "description": "Configuration management",
+        "icon": "⚙️",
+        "color": "#6366F1"
+      },
+      "Protocol": {
+        "description": "Communication protocols",
+        "icon": "📡",
+        "color": "#059669"
+      },
+      "MCP": {
+        "description": "Model Context Protocol servers",
+        "icon": "🌐",
+        "color": "#7C3AED"
+      }
+    },
+    "edgeTypes": {
+      "Manages": {
+        "description": "Management relationship",
+        "icon": "👤",
+        "color": "#DC2626"
+      },
+      "Uses": {
+        "description": "Uses or depends on",
+        "icon": "⬇️",
+        "color": "#7C3AED"
+      },
+      "Connects": {
+        "description": "Connection or communication",
+        "icon": "🔗",
+        "color": "#059669"
+      },
+      "Validates": {
+        "description": "Validation or authentication",
+        "icon": "✅",
+        "color": "#10B981"
+      },
+      "Configures": {
+        "description": "Configuration relationship",
+        "icon": "⚙️",
+        "color": "#6366F1"
+      },
+      "Streams": {
+        "description": "Real-time data streaming",
+        "icon": "📡",
+        "color": "#EA580C"
+      }
+    }
+  },
+  "nodes": [
+    {
+      "id": "acp-agent",
+      "type": "text",
+      "x": -90,
+      "y": -55,
+      "width": 180,
+      "height": 80,
+      "text": "ACP Agent\n🤖\nAgent Client Protocol implementation",
+      "vv": {
+        "nodeType": "Agent",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "session-manager",
+      "type": "text",
+      "x": 197,
+      "y": 134,
+      "width": 180,
+      "height": 80,
+      "text": "Session Manager\n🔄\nManages agent sessions and state",
+      "vv": {
+        "nodeType": "Session",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "agent-core",
+      "type": "text",
+      "x": 45,
+      "y": 292,
+      "width": 180,
+      "height": 80,
+      "text": "Agent Core\n🤖\nBuilt-in agents (general, explore, build, plan)",
+      "vv": {
+        "nodeType": "Agent",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "provider-manager",
+      "type": "text",
+      "x": -91,
+      "y": 136,
+      "width": 180,
+      "height": 80,
+      "text": "Provider Manager\n🔌\nManages AI model providers",
+      "vv": {
+        "nodeType": "Provider",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "tool-system",
+      "type": "text",
+      "x": 197,
+      "y": 419,
+      "width": 180,
+      "height": 80,
+      "text": "Tool System\n🛠️\nAgent tools (bash, read, write, etc.)",
+      "vv": {
+        "nodeType": "Tool",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "permission-system",
+      "type": "text",
+      "x": 197,
+      "y": 548,
+      "width": 180,
+      "height": 80,
+      "text": "Permission System\n🔐\nAccess control and permissions",
+      "vv": {
+        "nodeType": "Permission",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "config-manager",
+      "type": "text",
+      "x": -92,
+      "y": 693,
+      "width": 180,
+      "height": 80,
+      "text": "Config Manager\n⚙️\nAgent and system configuration",
+      "vv": {
+        "nodeType": "Config",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "acp-protocol",
+      "type": "text",
+      "x": -377,
+      "y": 139,
+      "width": 180,
+      "height": 80,
+      "text": "ACP Protocol\n📡\nAgent Client Protocol interface",
+      "vv": {
+        "nodeType": "Protocol",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "mcp-servers",
+      "type": "text",
+      "x": 351,
+      "y": 289,
+      "width": 180,
+      "height": 80,
+      "text": "MCP Servers\n🌐\nModel Context Protocol servers",
+      "vv": {
+        "nodeType": "MCP",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "cli-interface",
+      "type": "text",
+      "x": -91,
+      "y": -208,
+      "width": 180,
+      "height": 80,
+      "text": "CLI Interface\n💻\nCommand line interface for agents",
+      "vv": {
+        "nodeType": "Tool",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "event-system",
+      "type": "text",
+      "x": 196,
+      "y": -52,
+      "width": 180,
+      "height": 80,
+      "text": "Event System\n📡\nReal-time event streaming",
+      "vv": {
+        "nodeType": "Protocol",
+        "shape": "rectangle"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "acp-manages-session",
+      "fromNode": "acp-agent",
+      "toNode": "session-manager",
+      "text": "Manages 👤",
+      "vv": {
+        "edgeType": "Manages"
+      }
+    },
+    {
+      "id": "session-uses-agent-core",
+      "fromNode": "session-manager",
+      "toNode": "agent-core",
+      "text": "Uses ⬇️",
+      "vv": {
+        "edgeType": "Uses"
+      }
+    },
+    {
+      "id": "acp-uses-provider",
+      "fromNode": "acp-agent",
+      "toNode": "provider-manager",
+      "text": "Uses ⬇️",
+      "vv": {
+        "edgeType": "Uses"
+      }
+    },
+    {
+      "id": "agent-uses-tools",
+      "fromNode": "agent-core",
+      "toNode": "tool-system",
+      "text": "Uses ⬇️",
+      "vv": {
+        "edgeType": "Uses"
+      }
+    },
+    {
+      "id": "tools-validate-permissions",
+      "fromNode": "tool-system",
+      "toNode": "permission-system",
+      "text": "Validates ✅",
+      "vv": {
+        "edgeType": "Validates"
+      }
+    },
+    {
+      "id": "agent-uses-config",
+      "fromNode": "agent-core",
+      "toNode": "config-manager",
+      "text": "Uses ⬇️",
+      "vv": {
+        "edgeType": "Uses"
+      }
+    },
+    {
+      "id": "acp-implements-protocol",
+      "fromNode": "acp-agent",
+      "toNode": "acp-protocol",
+      "text": "Implements 📡",
+      "vv": {
+        "edgeType": "Connects"
+      }
+    },
+    {
+      "id": "session-connects-mcp",
+      "fromNode": "session-manager",
+      "toNode": "mcp-servers",
+      "text": "Connects 🔗",
+      "vv": {
+        "edgeType": "Connects"
+      }
+    },
+    {
+      "id": "cli-uses-agent",
+      "fromNode": "cli-interface",
+      "toNode": "acp-agent",
+      "text": "Uses ⬇️",
+      "vv": {
+        "edgeType": "Uses"
+      }
+    },
+    {
+      "id": "event-streams-session",
+      "fromNode": "event-system",
+      "toNode": "session-manager",
+      "text": "Streams 📡",
+      "vv": {
+        "edgeType": "Streams"
+      }
+    },
+    {
+      "id": "provider-configures-models",
+      "fromNode": "provider-manager",
+      "toNode": "config-manager",
+      "text": "Configures ⚙️",
+      "vv": {
+        "edgeType": "Configures"
+      }
+    },
+    {
+      "id": "permission-configures-access",
+      "fromNode": "permission-system",
+      "toNode": "config-manager",
+      "text": "Configures ⚙️",
+      "vv": {
+        "edgeType": "Configures"
+      }
+    }
+  ]
+}

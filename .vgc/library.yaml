@@ -1,0 +1,64 @@
+version: "1.0.0"
+name: "OpenCode Architecture Library"
+
+nodeComponents:
+  Frontend:
+    type: "service"
+    description: "Frontend applications and UI"
+    icon: "🌐"
+    color: "#3B82F6"
+
+  Backend:
+    type: "service"
+    description: "Backend services and APIs"
+    icon: "⚙️"
+    color: "#10B981"
+
+  Package:
+    type: "module"
+    description: "Reusable packages and libraries"
+    icon: "📦"
+    color: "#8B5CF6"
+
+  CLI:
+    type: "tool"
+    description: "Command line interface tools"
+    icon: "💻"
+    color: "#F59E0B"
+
+  Infrastructure:
+    type: "platform"
+    description: "Infrastructure and deployment"
+    icon: "🏗️"
+    color: "#EF4444"
+
+  Database:
+    type: "storage"
+    description: "Data storage solutions"
+    icon: "🗄️"
+    color: "#6366F1"
+
+edgeComponents:
+  API:
+    type: "data"
+    description: "API communication"
+    icon: "🔌"
+    color: "#059669"
+
+  Import:
+    type: "dependency"
+    description: "Module import dependency"
+    icon: "⬇️"
+    color: "#7C3AED"
+
+  Deploy:
+    type: "deployment"
+    description: "Deployment relationship"
+    icon: "🚀"
+    color: "#DC2626"
+
+  Auth:
+    type: "security"
+    description: "Authentication flow"
+    icon: "🔐"
+    color: "#EA580C"

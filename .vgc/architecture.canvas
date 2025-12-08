@@ -1,0 +1,341 @@
+{
+  "vv": {
+    "name": "OpenCode Architecture",
+    "version": "1.0.0",
+    "nodeTypes": {
+      "CLI": {
+        "description": "Command line interface tools",
+        "icon": "💻",
+        "color": "#F59E0B"
+      },
+      "Frontend": {
+        "description": "Frontend applications and UI",
+        "icon": "🌐",
+        "color": "#3B82F6"
+      },
+      "Backend": {
+        "description": "Backend services and APIs",
+        "icon": "⚙️",
+        "color": "#10B981"
+      },
+      "Package": {
+        "description": "Reusable packages and libraries",
+        "icon": "📦",
+        "color": "#8B5CF6"
+      },
+      "Infrastructure": {
+        "description": "Infrastructure and deployment",
+        "icon": "🏗️",
+        "color": "#EF4444"
+      }
+    },
+    "edgeTypes": {
+      "API": {
+        "description": "API communication",
+        "icon": "🔌",
+        "color": "#059669"
+      },
+      "Import": {
+        "description": "Module import dependency",
+        "icon": "⬇️",
+        "color": "#7C3AED"
+      },
+      "Deploy": {
+        "description": "Deployment relationship",
+        "icon": "🚀",
+        "color": "#DC2626"
+      },
+      "Auth": {
+        "description": "Authentication flow",
+        "icon": "🔐",
+        "color": "#EA580C"
+      }
+    }
+  },
+  "nodes": [
+    {
+      "id": "opencode-cli",
+      "type": "text",
+      "x": 814,
+      "y": -210,
+      "width": 160,
+      "height": 80,
+      "text": "OpenCode CLI\n💻\nMain CLI tool for AI-powered development",
+      "vv": {
+        "nodeType": "CLI",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "console-app",
+      "type": "text",
+      "x": 513,
+      "y": 17,
+      "width": 160,
+      "height": 80,
+      "text": "Console App\n🌐\nWeb console for OpenCode management",
+      "vv": {
+        "nodeType": "Frontend",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "desktop-app",
+      "type": "text",
+      "x": 95,
+      "y": 159,
+      "width": 160,
+      "height": 80,
+      "text": "Desktop App\n🌐\nNative desktop application",
+      "vv": {
+        "nodeType": "Frontend",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "web-app",
+      "type": "text",
+      "x": 279,
+      "y": 160,
+      "width": 160,
+      "height": 80,
+      "text": "Web App\n🌐\nMain web interface",
+      "vv": {
+        "nodeType": "Frontend",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "console-function",
+      "type": "text",
+      "x": 512,
+      "y": 366,
+      "width": 160,
+      "height": 80,
+      "text": "Console Functions\n⚙️\nServerless functions for console",
+      "vv": {
+        "nodeType": "Backend",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "enterprise",
+      "type": "text",
+      "x": 788,
+      "y": 365,
+      "width": 160,
+      "height": 80,
+      "text": "Enterprise API\n⚙️\nEnterprise features API",
+      "vv": {
+        "nodeType": "Backend",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "identity",
+      "type": "text",
+      "x": 655,
+      "y": 490,
+      "width": 160,
+      "height": 80,
+      "text": "Identity Service\n⚙️\nAuthentication & authorization",
+      "vv": {
+        "nodeType": "Backend",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "sdk-js",
+      "type": "text",
+      "x": 815,
+      "y": -58,
+      "width": 160,
+      "height": 80,
+      "text": "JavaScript SDK\n📦\nClient SDK for JavaScript",
+      "vv": {
+        "nodeType": "Package",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "ui-package",
+      "type": "text",
+      "x": 278,
+      "y": 366,
+      "width": 160,
+      "height": 80,
+      "text": "UI Components\n📦\nReusable UI components",
+      "vv": {
+        "nodeType": "Package",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "util-package",
+      "type": "text",
+      "x": 572,
+      "y": -207,
+      "width": 160,
+      "height": 80,
+      "text": "Utilities\n📦\nShared utility functions",
+      "vv": {
+        "nodeType": "Package",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "infra",
+      "type": "text",
+      "x": 653,
+      "y": 765,
+      "width": 160,
+      "height": 80,
+      "text": "Infrastructure\n🏗️\nSST infrastructure as code",
+      "vv": {
+        "nodeType": "Infrastructure",
+        "shape": "rectangle"
+      }
+    },
+    {
+      "id": "slack-app",
+      "type": "text",
+      "x": 999,
+      "y": 363,
+      "width": 160,
+      "height": 80,
+      "text": "Slack Integration\n📦\nSlack bot and integration",
+      "vv": {
+        "nodeType": "Package",
+        "shape": "rectangle"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "cli-to-sdk",
+      "fromNode": "opencode-cli",
+      "toNode": "sdk-js",
+      "text": "Import ⬇️",
+      "vv": {
+        "edgeType": "Import"
+      }
+    },
+    {
+      "id": "console-to-function",
+      "fromNode": "console-app",
+      "toNode": "console-function",
+      "text": "API 🔌",
+      "vv": {
+        "edgeType": "API"
+      }
+    },
+    {
+      "id": "desktop-to-function",
+      "fromNode": "desktop-app",
+      "toNode": "console-function",
+      "text": "API 🔌",
+      "vv": {
+        "edgeType": "API"
+      }
+    },
+    {
+      "id": "web-to-function",
+      "fromNode": "web-app",
+      "toNode": "console-function",
+      "text": "API 🔌",
+      "vv": {
+        "edgeType": "API"
+      }
+    },
+    {
+      "id": "console-to-enterprise",
+      "fromNode": "console-app",
+      "toNode": "enterprise",
+      "text": "API 🔌",
+      "vv": {
+        "edgeType": "API"
+      }
+    },
+    {
+      "id": "function-to-identity",
+      "fromNode": "console-function",
+      "toNode": "identity",
+      "text": "Auth 🔐",
+      "vv": {
+        "edgeType": "Auth"
+      }
+    },
+    {
+      "id": "enterprise-to-identity",
+      "fromNode": "enterprise",
+      "toNode": "identity",
+      "text": "Auth 🔐",
+      "vv": {
+        "edgeType": "Auth"
+      }
+    },
+    {
+      "id": "function-to-infra",
+      "fromNode": "console-function",
+      "toNode": "infra",
+      "text": "Deploy 🚀",
+      "vv": {
+        "edgeType": "Deploy"
+      }
+    },
+    {
+      "id": "enterprise-to-infra",
+      "fromNode": "enterprise",
+      "toNode": "infra",
+      "text": "Deploy 🚀",
+      "vv": {
+        "edgeType": "Deploy"
+      }
+    },
+    {
+      "id": "identity-to-infra",
+      "fromNode": "identity",
+      "toNode": "infra",
+      "text": "Deploy 🚀",
+      "vv": {
+        "edgeType": "Deploy"
+      }
+    },
+    {
+      "id": "slack-to-infra",
+      "fromNode": "slack-app",
+      "toNode": "infra",
+      "text": "Deploy 🚀",
+      "vv": {
+        "edgeType": "Deploy"
+      }
+    },
+    {
+      "id": "console-to-ui",
+      "fromNode": "console-app",
+      "toNode": "ui-package",
+      "text": "Import ⬇️",
+      "vv": {
+        "edgeType": "Import"
+      }
+    },
+    {
+      "id": "desktop-to-ui",
+      "fromNode": "desktop-app",
+      "toNode": "ui-package",
+      "text": "Import ⬇️",
+      "vv": {
+        "edgeType": "Import"
+      }
+    },
+    {
+      "id": "web-to-ui",
+      "fromNode": "web-app",
+      "toNode": "ui-package",
+      "text": "Import ⬇️",
+      "vv": {
+        "edgeType": "Import"
+      }
+    }
+  ]
+}
