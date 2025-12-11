@@ -1,5 +1,5 @@
 {
-  "vv": {
+  "pv": {
     "name": "Desktop App Architecture",
     "version": "1.0.0",
     "nodeTypes": {
@@ -51,33 +51,21 @@
     },
     "edgeTypes": {
       "Renders": {
-        "description": "Rendering relationship",
-        "icon": "🎨",
         "color": "#3B82F6"
       },
       "Manages": {
-        "description": "Management relationship",
-        "icon": "👤",
         "color": "#DC2626"
       },
       "Provides": {
-        "description": "Provides or supplies",
-        "icon": "⬇️",
         "color": "#7C3AED"
       },
       "Connects": {
-        "description": "Connection or communication",
-        "icon": "🔗",
         "color": "#059669"
       },
       "Syncs": {
-        "description": "Synchronization relationship",
-        "icon": "🔄",
         "color": "#10B981"
       },
       "Contains": {
-        "description": "Contains or includes",
-        "icon": "📦",
         "color": "#F59E0B"
       }
     }
@@ -91,7 +79,7 @@
       "width": 180,
       "height": 80,
       "text": "App Root\n🖥️\nMain application entry point",
-      "vv": {
+      "pv": {
         "nodeType": "UI",
         "shape": "rectangle"
       }
@@ -104,7 +92,7 @@
       "width": 180,
       "height": 80,
       "text": "Router\n🔄\nSolidJS routing system",
-      "vv": {
+      "pv": {
         "nodeType": "UI",
         "shape": "rectangle"
       }
@@ -117,7 +105,7 @@
       "width": 180,
       "height": 80,
       "text": "Layout Page\n📄\nMain layout component",
-      "vv": {
+      "pv": {
         "nodeType": "Page",
         "shape": "rectangle"
       }
@@ -130,7 +118,7 @@
       "width": 180,
       "height": 80,
       "text": "Global SDK Context\n🔌\nSDK integration context",
-      "vv": {
+      "pv": {
         "nodeType": "Context",
         "shape": "rectangle"
       }
@@ -143,7 +131,7 @@
       "width": 180,
       "height": 80,
       "text": "Global Sync Context\n🔄\nGlobal data synchronization",
-      "vv": {
+      "pv": {
         "nodeType": "Context",
         "shape": "rectangle"
       }
@@ -156,7 +144,7 @@
       "width": 180,
       "height": 80,
       "text": "Layout Context\n📐\nLayout state management",
-      "vv": {
+      "pv": {
         "nodeType": "Context",
         "shape": "rectangle"
       }
@@ -169,7 +157,7 @@
       "width": 180,
       "height": 80,
       "text": "Session Context\n🔄\nSession state management",
-      "vv": {
+      "pv": {
         "nodeType": "Context",
         "shape": "rectangle"
       }
@@ -182,7 +170,7 @@
       "width": 180,
       "height": 80,
       "text": "Session Page\n📄\nMain session interface",
-      "vv": {
+      "pv": {
         "nodeType": "Page",
         "shape": "rectangle"
       }
@@ -195,7 +183,7 @@
       "width": 180,
       "height": 80,
       "text": "Terminal Component\n💻\nGhostty terminal integration",
-      "vv": {
+      "pv": {
         "nodeType": "Terminal",
         "shape": "rectangle"
       }
@@ -208,7 +196,7 @@
       "width": 180,
       "height": 80,
       "text": "File Tree Component\n🧩\nFile system navigation",
-      "vv": {
+      "pv": {
         "nodeType": "Component",
         "shape": "rectangle"
       }
@@ -221,7 +209,7 @@
       "width": 180,
       "height": 80,
       "text": "Prompt Input\n🧩\nUser input component",
-      "vv": {
+      "pv": {
         "nodeType": "Component",
         "shape": "rectangle"
       }
@@ -234,7 +222,7 @@
       "width": 180,
       "height": 80,
       "text": "SDK Client\n🔌\nOpenCode SDK integration",
-      "vv": {
+      "pv": {
         "nodeType": "SDK",
         "shape": "rectangle"
       }
@@ -247,7 +235,7 @@
       "width": 180,
       "height": 80,
       "text": "Sync Engine\n🔄\nReal-time data sync",
-      "vv": {
+      "pv": {
         "nodeType": "Sync",
         "shape": "rectangle"
       }
@@ -260,7 +248,7 @@
       "width": 180,
       "height": 80,
       "text": "PTY WebSocket\n💻\nTerminal WebSocket connection",
-      "vv": {
+      "pv": {
         "nodeType": "Terminal",
         "shape": "rectangle"
       }
@@ -273,7 +261,7 @@
       "width": 180,
       "height": 80,
       "text": "Local Storage\n📦\nPersistent state storage",
-      "vv": {
+      "pv": {
         "nodeType": "Context",
         "shape": "rectangle"
       }
@@ -284,8 +272,8 @@
       "id": "root-renders-router",
       "fromNode": "app-root",
       "toNode": "router",
-      "text": "Renders 🎨",
-      "vv": {
+      "label": "Renders 🎨",
+      "pv": {
         "edgeType": "Renders"
       }
     },
@@ -293,8 +281,8 @@
       "id": "router-renders-layout",
       "fromNode": "router",
       "toNode": "layout-page",
-      "text": "Renders 🎨",
-      "vv": {
+      "label": "Renders 🎨",
+      "pv": {
         "edgeType": "Renders"
       }
     },
@@ -302,8 +290,8 @@
       "id": "root-provides-global-sdk",
       "fromNode": "app-root",
       "toNode": "global-sdk-context",
-      "text": "Provides ⬇️",
-      "vv": {
+      "label": "Provides ⬇️",
+      "pv": {
         "edgeType": "Provides"
       }
     },
@@ -311,8 +299,8 @@
       "id": "root-provides-global-sync",
       "fromNode": "app-root",
       "toNode": "global-sync-context",
-      "text": "Provides ⬇️",
-      "vv": {
+      "label": "Provides ⬇️",
+      "pv": {
         "edgeType": "Provides"
       }
     },
@@ -320,8 +308,8 @@
       "id": "layout-provides-layout-context",
       "fromNode": "layout-page",
       "toNode": "layout-context",
-      "text": "Provides ⬇️",
-      "vv": {
+      "label": "Provides ⬇️",
+      "pv": {
         "edgeType": "Provides"
       }
     },
@@ -329,8 +317,8 @@
       "id": "layout-renders-session",
       "fromNode": "layout-page",
       "toNode": "session-page",
-      "text": "Renders 🎨",
-      "vv": {
+      "label": "Renders 🎨",
+      "pv": {
         "edgeType": "Renders"
       }
     },
@@ -338,8 +326,8 @@
       "id": "session-provides-session-context",
       "fromNode": "session-page",
       "toNode": "session-context",
-      "text": "Provides ⬇️",
-      "vv": {
+      "label": "Provides ⬇️",
+      "pv": {
         "edgeType": "Provides"
       }
     },
@@ -347,8 +335,8 @@
       "id": "session-renders-terminal",
       "fromNode": "session-page",
       "toNode": "terminal-component",
-      "text": "Renders 🎨",
-      "vv": {
+      "label": "Renders 🎨",
+      "pv": {
         "edgeType": "Renders"
       }
     },
@@ -356,8 +344,8 @@
       "id": "session-renders-file-tree",
       "fromNode": "session-page",
       "toNode": "file-tree-component",
-      "text": "Renders 🎨",
-      "vv": {
+      "label": "Renders 🎨",
+      "pv": {
         "edgeType": "Renders"
       }
     },
@@ -365,8 +353,8 @@
       "id": "session-renders-prompt",
       "fromNode": "session-page",
       "toNode": "prompt-input-component",
-      "text": "Renders 🎨",
-      "vv": {
+      "label": "Renders 🎨",
+      "pv": {
         "edgeType": "Renders"
       }
     },
@@ -374,8 +362,8 @@
       "id": "global-sdk-connects-sdk",
       "fromNode": "global-sdk-context",
       "toNode": "sdk-client",
-      "text": "Connects 🔗",
-      "vv": {
+      "label": "Connects 🔗",
+      "pv": {
         "edgeType": "Connects"
       }
     },
@@ -383,8 +371,8 @@
       "id": "global-sync-uses-sync",
       "fromNode": "global-sync-context",
       "toNode": "sync-engine",
-      "text": "Uses ⬇️",
-      "vv": {
+      "label": "Uses ⬇️",
+      "pv": {
         "edgeType": "Provides"
       }
     },
@@ -392,8 +380,8 @@
       "id": "terminal-connects-pty",
       "fromNode": "terminal-component",
       "toNode": "pty-websocket",
-      "text": "Connects 🔗",
-      "vv": {
+      "label": "Connects 🔗",
+      "pv": {
         "edgeType": "Connects"
       }
     },
@@ -401,8 +389,8 @@
       "id": "session-syncs-storage",
       "fromNode": "session-context",
       "toNode": "local-storage",
-      "text": "Syncs 🔄",
-      "vv": {
+      "label": "Syncs 🔄",
+      "pv": {
         "edgeType": "Syncs"
       }
     },
@@ -410,8 +398,8 @@
       "id": "layout-manages-sidebar",
       "fromNode": "layout-context",
       "toNode": "file-tree-component",
-      "text": "Manages 👤",
-      "vv": {
+      "label": "Manages 👤",
+      "pv": {
         "edgeType": "Manages"
       }
     },
@@ -419,8 +407,8 @@
       "id": "session-contains-components",
       "fromNode": "session-context",
       "toNode": "prompt-input-component",
-      "text": "Contains 📦",
-      "vv": {
+      "label": "Contains 📦",
+      "pv": {
         "edgeType": "Contains"
       }
     }

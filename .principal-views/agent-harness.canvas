@@ -1,5 +1,5 @@
 {
-  "vv": {
+  "pv": {
     "name": "Agent Harness Architecture",
     "version": "1.0.0",
     "nodeTypes": {
@@ -46,33 +46,21 @@
     },
     "edgeTypes": {
       "Manages": {
-        "description": "Management relationship",
-        "icon": "👤",
         "color": "#DC2626"
       },
       "Uses": {
-        "description": "Uses or depends on",
-        "icon": "⬇️",
         "color": "#7C3AED"
       },
       "Connects": {
-        "description": "Connection or communication",
-        "icon": "🔗",
         "color": "#059669"
       },
       "Validates": {
-        "description": "Validation or authentication",
-        "icon": "✅",
         "color": "#10B981"
       },
       "Configures": {
-        "description": "Configuration relationship",
-        "icon": "⚙️",
         "color": "#6366F1"
       },
       "Streams": {
-        "description": "Real-time data streaming",
-        "icon": "📡",
         "color": "#EA580C"
       }
     }
@@ -86,7 +74,7 @@
       "width": 180,
       "height": 80,
       "text": "ACP Agent\n🤖\nAgent Client Protocol implementation",
-      "vv": {
+      "pv": {
         "nodeType": "Agent",
         "shape": "rectangle"
       }
@@ -99,7 +87,7 @@
       "width": 180,
       "height": 80,
       "text": "Session Manager\n🔄\nManages agent sessions and state",
-      "vv": {
+      "pv": {
         "nodeType": "Session",
         "shape": "rectangle"
       }
@@ -112,7 +100,7 @@
       "width": 180,
       "height": 80,
       "text": "Agent Core\n🤖\nBuilt-in agents (general, explore, build, plan)",
-      "vv": {
+      "pv": {
         "nodeType": "Agent",
         "shape": "rectangle"
       }
@@ -125,7 +113,7 @@
       "width": 180,
       "height": 80,
       "text": "Provider Manager\n🔌\nManages AI model providers",
-      "vv": {
+      "pv": {
         "nodeType": "Provider",
         "shape": "rectangle"
       }
@@ -138,7 +126,7 @@
       "width": 180,
       "height": 80,
       "text": "Tool System\n🛠️\nAgent tools (bash, read, write, etc.)",
-      "vv": {
+      "pv": {
         "nodeType": "Tool",
         "shape": "rectangle"
       }
@@ -151,7 +139,7 @@
       "width": 180,
       "height": 80,
       "text": "Permission System\n🔐\nAccess control and permissions",
-      "vv": {
+      "pv": {
         "nodeType": "Permission",
         "shape": "rectangle"
       }
@@ -164,7 +152,7 @@
       "width": 180,
       "height": 80,
       "text": "Config Manager\n⚙️\nAgent and system configuration",
-      "vv": {
+      "pv": {
         "nodeType": "Config",
         "shape": "rectangle"
       }
@@ -177,7 +165,7 @@
       "width": 180,
       "height": 80,
       "text": "ACP Protocol\n📡\nAgent Client Protocol interface",
-      "vv": {
+      "pv": {
         "nodeType": "Protocol",
         "shape": "rectangle"
       }
@@ -190,7 +178,7 @@
       "width": 180,
       "height": 80,
       "text": "MCP Servers\n🌐\nModel Context Protocol servers",
-      "vv": {
+      "pv": {
         "nodeType": "MCP",
         "shape": "rectangle"
       }
@@ -203,7 +191,7 @@
       "width": 180,
       "height": 80,
       "text": "CLI Interface\n💻\nCommand line interface for agents",
-      "vv": {
+      "pv": {
         "nodeType": "Tool",
         "shape": "rectangle"
       }
@@ -216,7 +204,7 @@
       "width": 180,
       "height": 80,
       "text": "Event System\n📡\nReal-time event streaming",
-      "vv": {
+      "pv": {
         "nodeType": "Protocol",
         "shape": "rectangle"
       }
@@ -227,8 +215,8 @@
       "id": "acp-manages-session",
       "fromNode": "acp-agent",
       "toNode": "session-manager",
-      "text": "Manages 👤",
-      "vv": {
+      "label": "Manages 👤",
+      "pv": {
         "edgeType": "Manages"
       }
     },
@@ -236,8 +224,8 @@
       "id": "session-uses-agent-core",
       "fromNode": "session-manager",
       "toNode": "agent-core",
-      "text": "Uses ⬇️",
-      "vv": {
+      "label": "Uses ⬇️",
+      "pv": {
         "edgeType": "Uses"
       }
     },
@@ -245,8 +233,8 @@
       "id": "acp-uses-provider",
       "fromNode": "acp-agent",
       "toNode": "provider-manager",
-      "text": "Uses ⬇️",
-      "vv": {
+      "label": "Uses ⬇️",
+      "pv": {
         "edgeType": "Uses"
       }
     },
@@ -254,8 +242,8 @@
       "id": "agent-uses-tools",
       "fromNode": "agent-core",
       "toNode": "tool-system",
-      "text": "Uses ⬇️",
-      "vv": {
+      "label": "Uses ⬇️",
+      "pv": {
         "edgeType": "Uses"
       }
     },
@@ -263,8 +251,8 @@
       "id": "tools-validate-permissions",
       "fromNode": "tool-system",
       "toNode": "permission-system",
-      "text": "Validates ✅",
-      "vv": {
+      "label": "Validates ✅",
+      "pv": {
         "edgeType": "Validates"
       }
     },
@@ -272,8 +260,8 @@
       "id": "agent-uses-config",
       "fromNode": "agent-core",
       "toNode": "config-manager",
-      "text": "Uses ⬇️",
-      "vv": {
+      "label": "Uses ⬇️",
+      "pv": {
         "edgeType": "Uses"
       }
     },
@@ -281,8 +269,8 @@
       "id": "acp-implements-protocol",
       "fromNode": "acp-agent",
       "toNode": "acp-protocol",
-      "text": "Implements 📡",
-      "vv": {
+      "label": "Implements 📡",
+      "pv": {
         "edgeType": "Connects"
       }
     },
@@ -290,8 +278,8 @@
       "id": "session-connects-mcp",
       "fromNode": "session-manager",
       "toNode": "mcp-servers",
-      "text": "Connects 🔗",
-      "vv": {
+      "label": "Connects 🔗",
+      "pv": {
         "edgeType": "Connects"
       }
     },
@@ -299,8 +287,8 @@
       "id": "cli-uses-agent",
       "fromNode": "cli-interface",
       "toNode": "acp-agent",
-      "text": "Uses ⬇️",
-      "vv": {
+      "label": "Uses ⬇️",
+      "pv": {
         "edgeType": "Uses"
       }
     },
@@ -308,8 +296,8 @@
       "id": "event-streams-session",
       "fromNode": "event-system",
       "toNode": "session-manager",
-      "text": "Streams 📡",
-      "vv": {
+      "label": "Streams 📡",
+      "pv": {
         "edgeType": "Streams"
       }
     },
@@ -317,8 +305,8 @@
       "id": "provider-configures-models",
       "fromNode": "provider-manager",
       "toNode": "config-manager",
-      "text": "Configures ⚙️",
-      "vv": {
+      "label": "Configures ⚙️",
+      "pv": {
         "edgeType": "Configures"
       }
     },
@@ -326,8 +314,8 @@
       "id": "permission-configures-access",
       "fromNode": "permission-system",
       "toNode": "config-manager",
-      "text": "Configures ⚙️",
-      "vv": {
+      "label": "Configures ⚙️",
+      "pv": {
         "edgeType": "Configures"
       }
     }

@@ -1,5 +1,5 @@
 {
-  "vv": {
+  "pv": {
     "name": "OpenCode Architecture",
     "version": "1.0.0",
     "nodeTypes": {
@@ -31,23 +31,15 @@
     },
     "edgeTypes": {
       "API": {
-        "description": "API communication",
-        "icon": "🔌",
         "color": "#059669"
       },
       "Import": {
-        "description": "Module import dependency",
-        "icon": "⬇️",
         "color": "#7C3AED"
       },
       "Deploy": {
-        "description": "Deployment relationship",
-        "icon": "🚀",
         "color": "#DC2626"
       },
       "Auth": {
-        "description": "Authentication flow",
-        "icon": "🔐",
         "color": "#EA580C"
       }
     }
@@ -61,7 +53,7 @@
       "width": 160,
       "height": 80,
       "text": "OpenCode CLI\n💻\nMain CLI tool for AI-powered development",
-      "vv": {
+      "pv": {
         "nodeType": "CLI",
         "shape": "rectangle"
       }
@@ -74,7 +66,7 @@
       "width": 160,
       "height": 80,
       "text": "Console App\n🌐\nWeb console for OpenCode management",
-      "vv": {
+      "pv": {
         "nodeType": "Frontend",
         "shape": "rectangle"
       }
@@ -87,7 +79,7 @@
       "width": 160,
       "height": 80,
       "text": "Desktop App\n🌐\nNative desktop application",
-      "vv": {
+      "pv": {
         "nodeType": "Frontend",
         "shape": "rectangle"
       }
@@ -100,7 +92,7 @@
       "width": 160,
       "height": 80,
       "text": "Web App\n🌐\nMain web interface",
-      "vv": {
+      "pv": {
         "nodeType": "Frontend",
         "shape": "rectangle"
       }
@@ -113,7 +105,7 @@
       "width": 160,
       "height": 80,
       "text": "Console Functions\n⚙️\nServerless functions for console",
-      "vv": {
+      "pv": {
         "nodeType": "Backend",
         "shape": "rectangle"
       }
@@ -126,7 +118,7 @@
       "width": 160,
       "height": 80,
       "text": "Enterprise API\n⚙️\nEnterprise features API",
-      "vv": {
+      "pv": {
         "nodeType": "Backend",
         "shape": "rectangle"
       }
@@ -139,7 +131,7 @@
       "width": 160,
       "height": 80,
       "text": "Identity Service\n⚙️\nAuthentication & authorization",
-      "vv": {
+      "pv": {
         "nodeType": "Backend",
         "shape": "rectangle"
       }
@@ -152,7 +144,7 @@
       "width": 160,
       "height": 80,
       "text": "JavaScript SDK\n📦\nClient SDK for JavaScript",
-      "vv": {
+      "pv": {
         "nodeType": "Package",
         "shape": "rectangle"
       }
@@ -165,7 +157,7 @@
       "width": 160,
       "height": 80,
       "text": "UI Components\n📦\nReusable UI components",
-      "vv": {
+      "pv": {
         "nodeType": "Package",
         "shape": "rectangle"
       }
@@ -178,7 +170,7 @@
       "width": 160,
       "height": 80,
       "text": "Utilities\n📦\nShared utility functions",
-      "vv": {
+      "pv": {
         "nodeType": "Package",
         "shape": "rectangle"
       }
@@ -191,7 +183,7 @@
       "width": 160,
       "height": 80,
       "text": "Infrastructure\n🏗️\nSST infrastructure as code",
-      "vv": {
+      "pv": {
         "nodeType": "Infrastructure",
         "shape": "rectangle"
       }
@@ -204,7 +196,7 @@
       "width": 160,
       "height": 80,
       "text": "Slack Integration\n📦\nSlack bot and integration",
-      "vv": {
+      "pv": {
         "nodeType": "Package",
         "shape": "rectangle"
       }
@@ -215,8 +207,8 @@
       "id": "cli-to-sdk",
       "fromNode": "opencode-cli",
       "toNode": "sdk-js",
-      "text": "Import ⬇️",
-      "vv": {
+      "label": "Import ⬇️",
+      "pv": {
         "edgeType": "Import"
       }
     },
@@ -224,8 +216,8 @@
       "id": "console-to-function",
       "fromNode": "console-app",
       "toNode": "console-function",
-      "text": "API 🔌",
-      "vv": {
+      "label": "API 🔌",
+      "pv": {
         "edgeType": "API"
       }
     },
@@ -233,8 +225,8 @@
       "id": "desktop-to-function",
       "fromNode": "desktop-app",
       "toNode": "console-function",
-      "text": "API 🔌",
-      "vv": {
+      "label": "API 🔌",
+      "pv": {
         "edgeType": "API"
       }
     },
@@ -242,8 +234,8 @@
       "id": "web-to-function",
       "fromNode": "web-app",
       "toNode": "console-function",
-      "text": "API 🔌",
-      "vv": {
+      "label": "API 🔌",
+      "pv": {
         "edgeType": "API"
       }
     },
@@ -251,8 +243,8 @@
       "id": "console-to-enterprise",
       "fromNode": "console-app",
       "toNode": "enterprise",
-      "text": "API 🔌",
-      "vv": {
+      "label": "API 🔌",
+      "pv": {
         "edgeType": "API"
       }
     },
@@ -260,8 +252,8 @@
       "id": "function-to-identity",
       "fromNode": "console-function",
       "toNode": "identity",
-      "text": "Auth 🔐",
-      "vv": {
+      "label": "Auth 🔐",
+      "pv": {
         "edgeType": "Auth"
       }
     },
@@ -269,8 +261,8 @@
       "id": "enterprise-to-identity",
       "fromNode": "enterprise",
       "toNode": "identity",
-      "text": "Auth 🔐",
-      "vv": {
+      "label": "Auth 🔐",
+      "pv": {
         "edgeType": "Auth"
       }
     },
@@ -278,8 +270,8 @@
       "id": "function-to-infra",
       "fromNode": "console-function",
       "toNode": "infra",
-      "text": "Deploy 🚀",
-      "vv": {
+      "label": "Deploy 🚀",
+      "pv": {
         "edgeType": "Deploy"
       }
     },
@@ -287,8 +279,8 @@
       "id": "enterprise-to-infra",
       "fromNode": "enterprise",
       "toNode": "infra",
-      "text": "Deploy 🚀",
-      "vv": {
+      "label": "Deploy 🚀",
+      "pv": {
         "edgeType": "Deploy"
       }
     },
@@ -296,8 +288,8 @@
       "id": "identity-to-infra",
       "fromNode": "identity",
       "toNode": "infra",
-      "text": "Deploy 🚀",
-      "vv": {
+      "label": "Deploy 🚀",
+      "pv": {
         "edgeType": "Deploy"
       }
     },
@@ -305,8 +297,8 @@
       "id": "slack-to-infra",
       "fromNode": "slack-app",
       "toNode": "infra",
-      "text": "Deploy 🚀",
-      "vv": {
+      "label": "Deploy 🚀",
+      "pv": {
         "edgeType": "Deploy"
       }
     },
@@ -314,8 +306,8 @@
       "id": "console-to-ui",
       "fromNode": "console-app",
       "toNode": "ui-package",
-      "text": "Import ⬇️",
-      "vv": {
+      "label": "Import ⬇️",
+      "pv": {
         "edgeType": "Import"
       }
     },
@@ -323,8 +315,8 @@
       "id": "desktop-to-ui",
       "fromNode": "desktop-app",
       "toNode": "ui-package",
-      "text": "Import ⬇️",
-      "vv": {
+      "label": "Import ⬇️",
+      "pv": {
         "edgeType": "Import"
       }
     },
@@ -332,8 +324,8 @@
       "id": "web-to-ui",
       "fromNode": "web-app",
       "toNode": "ui-package",
-      "text": "Import ⬇️",
-      "vv": {
+      "label": "Import ⬇️",
+      "pv": {
         "edgeType": "Import"
       }
     }
