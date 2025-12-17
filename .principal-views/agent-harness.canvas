@@ -69,8 +69,8 @@
     {
       "id": "acp-agent",
       "type": "text",
-      "x": -90,
-      "y": -55,
+      "x": 231,
+      "y": 258,
       "width": 180,
       "height": 80,
       "text": "ACP Agent\n🤖\nAgent Client Protocol implementation",
@@ -95,8 +95,8 @@
     {
       "id": "agent-core",
       "type": "text",
-      "x": 45,
-      "y": 292,
+      "x": 360,
+      "y": 639,
       "width": 180,
       "height": 80,
       "text": "Agent Core\n🤖\nBuilt-in agents (general, explore, build, plan)",
@@ -108,8 +108,8 @@
     {
       "id": "provider-manager",
       "type": "text",
-      "x": -91,
-      "y": 136,
+      "x": 208,
+      "y": 458,
       "width": 180,
       "height": 80,
       "text": "Provider Manager\n🔌\nManages AI model providers",
@@ -121,8 +121,8 @@
     {
       "id": "tool-system",
       "type": "text",
-      "x": 197,
-      "y": 419,
+      "x": 526,
+      "y": 777,
       "width": 180,
       "height": 80,
       "text": "Tool System\n🛠️\nAgent tools (bash, read, write, etc.)",
@@ -134,8 +134,8 @@
     {
       "id": "permission-system",
       "type": "text",
-      "x": 197,
-      "y": 548,
+      "x": 388,
+      "y": 938,
       "width": 180,
       "height": 80,
       "text": "Permission System\n🔐\nAccess control and permissions",
@@ -147,8 +147,8 @@
     {
       "id": "config-manager",
       "type": "text",
-      "x": -92,
-      "y": 693,
+      "x": 217,
+      "y": 1063,
       "width": 180,
       "height": 80,
       "text": "Config Manager\n⚙️\nAgent and system configuration",
@@ -173,8 +173,8 @@
     {
       "id": "mcp-servers",
       "type": "text",
-      "x": 351,
-      "y": 289,
+      "x": 572,
+      "y": 628,
       "width": 180,
       "height": 80,
       "text": "MCP Servers\n🌐\nModel Context Protocol servers",
@@ -199,8 +199,8 @@
     {
       "id": "event-system",
       "type": "text",
-      "x": 196,
-      "y": -52,
+      "x": 421,
+      "y": 258,
       "width": 180,
       "height": 80,
       "text": "Event System\n📡\nReal-time event streaming",
@@ -228,17 +228,6 @@
       "toNode": "agent-core",
       "fromSide": "bottom",
       "toSide": "top",
-      "label": "Uses ⬇️",
-      "pv": {
-        "edgeType": "Uses"
-      }
-    },
-    {
-      "id": "acp-uses-provider",
-      "fromNode": "acp-agent",
-      "toNode": "provider-manager",
-      "fromSide": "right",
-      "toSide": "left",
       "label": "Uses ⬇️",
       "pv": {
         "edgeType": "Uses"
@@ -275,28 +264,6 @@
       "label": "Uses ⬇️",
       "pv": {
         "edgeType": "Uses"
-      }
-    },
-    {
-      "id": "acp-implements-protocol",
-      "fromNode": "acp-agent",
-      "toNode": "acp-protocol",
-      "fromSide": "left",
-      "toSide": "right",
-      "label": "Implements 📡",
-      "pv": {
-        "edgeType": "Connects"
-      }
-    },
-    {
-      "id": "session-connects-mcp",
-      "fromNode": "session-manager",
-      "toNode": "mcp-servers",
-      "fromSide": "right",
-      "toSide": "left",
-      "label": "Connects 🔗",
-      "pv": {
-        "edgeType": "Connects"
       }
     },
     {
