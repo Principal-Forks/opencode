@@ -215,6 +215,8 @@
       "id": "acp-manages-session",
       "fromNode": "acp-agent",
       "toNode": "session-manager",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "Manages 👤",
       "pv": {
         "edgeType": "Manages"
@@ -224,6 +226,8 @@
       "id": "session-uses-agent-core",
       "fromNode": "session-manager",
       "toNode": "agent-core",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "Uses ⬇️",
       "pv": {
         "edgeType": "Uses"
@@ -233,6 +237,8 @@
       "id": "acp-uses-provider",
       "fromNode": "acp-agent",
       "toNode": "provider-manager",
+      "fromSide": "right",
+      "toSide": "left",
       "label": "Uses ⬇️",
       "pv": {
         "edgeType": "Uses"
@@ -242,6 +248,8 @@
       "id": "agent-uses-tools",
       "fromNode": "agent-core",
       "toNode": "tool-system",
+      "fromSide": "right",
+      "toSide": "left",
       "label": "Uses ⬇️",
       "pv": {
         "edgeType": "Uses"
@@ -251,6 +259,8 @@
       "id": "tools-validate-permissions",
       "fromNode": "tool-system",
       "toNode": "permission-system",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "Validates ✅",
       "pv": {
         "edgeType": "Validates"
@@ -260,6 +270,8 @@
       "id": "agent-uses-config",
       "fromNode": "agent-core",
       "toNode": "config-manager",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "Uses ⬇️",
       "pv": {
         "edgeType": "Uses"
@@ -269,6 +281,8 @@
       "id": "acp-implements-protocol",
       "fromNode": "acp-agent",
       "toNode": "acp-protocol",
+      "fromSide": "left",
+      "toSide": "right",
       "label": "Implements 📡",
       "pv": {
         "edgeType": "Connects"
@@ -278,6 +292,8 @@
       "id": "session-connects-mcp",
       "fromNode": "session-manager",
       "toNode": "mcp-servers",
+      "fromSide": "right",
+      "toSide": "left",
       "label": "Connects 🔗",
       "pv": {
         "edgeType": "Connects"
@@ -287,6 +303,8 @@
       "id": "cli-uses-agent",
       "fromNode": "cli-interface",
       "toNode": "acp-agent",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "Uses ⬇️",
       "pv": {
         "edgeType": "Uses"
@@ -296,6 +314,8 @@
       "id": "event-streams-session",
       "fromNode": "event-system",
       "toNode": "session-manager",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "Streams 📡",
       "pv": {
         "edgeType": "Streams"
@@ -305,6 +325,8 @@
       "id": "provider-configures-models",
       "fromNode": "provider-manager",
       "toNode": "config-manager",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "Configures ⚙️",
       "pv": {
         "edgeType": "Configures"
@@ -314,6 +336,8 @@
       "id": "permission-configures-access",
       "fromNode": "permission-system",
       "toNode": "config-manager",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "Configures ⚙️",
       "pv": {
         "edgeType": "Configures"

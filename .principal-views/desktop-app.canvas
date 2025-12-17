@@ -272,6 +272,8 @@
       "id": "root-renders-router",
       "fromNode": "app-root",
       "toNode": "router",
+      "fromSide": "right",
+      "toSide": "left",
       "label": "Renders 🎨",
       "pv": {
         "edgeType": "Renders"
@@ -281,6 +283,8 @@
       "id": "router-renders-layout",
       "fromNode": "router",
       "toNode": "layout-page",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "Renders 🎨",
       "pv": {
         "edgeType": "Renders"
@@ -290,6 +294,8 @@
       "id": "root-provides-global-sdk",
       "fromNode": "app-root",
       "toNode": "global-sdk-context",
+      "fromSide": "left",
+      "toSide": "bottom",
       "label": "Provides ⬇️",
       "pv": {
         "edgeType": "Provides"
@@ -299,6 +305,8 @@
       "id": "root-provides-global-sync",
       "fromNode": "app-root",
       "toNode": "global-sync-context",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "Provides ⬇️",
       "pv": {
         "edgeType": "Provides"
@@ -308,6 +316,8 @@
       "id": "layout-provides-layout-context",
       "fromNode": "layout-page",
       "toNode": "layout-context",
+      "fromSide": "right",
+      "toSide": "left",
       "label": "Provides ⬇️",
       "pv": {
         "edgeType": "Provides"
@@ -317,6 +327,8 @@
       "id": "layout-renders-session",
       "fromNode": "layout-page",
       "toNode": "session-page",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "Renders 🎨",
       "pv": {
         "edgeType": "Renders"
@@ -326,6 +338,8 @@
       "id": "session-provides-session-context",
       "fromNode": "session-page",
       "toNode": "session-context",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "Provides ⬇️",
       "pv": {
         "edgeType": "Provides"
@@ -335,6 +349,8 @@
       "id": "session-renders-terminal",
       "fromNode": "session-page",
       "toNode": "terminal-component",
+      "fromSide": "right",
+      "toSide": "left",
       "label": "Renders 🎨",
       "pv": {
         "edgeType": "Renders"
@@ -344,6 +360,8 @@
       "id": "session-renders-file-tree",
       "fromNode": "session-page",
       "toNode": "file-tree-component",
+      "fromSide": "right",
+      "toSide": "left",
       "label": "Renders 🎨",
       "pv": {
         "edgeType": "Renders"
@@ -353,6 +371,8 @@
       "id": "session-renders-prompt",
       "fromNode": "session-page",
       "toNode": "prompt-input-component",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "Renders 🎨",
       "pv": {
         "edgeType": "Renders"
@@ -362,6 +382,8 @@
       "id": "global-sdk-connects-sdk",
       "fromNode": "global-sdk-context",
       "toNode": "sdk-client",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "Connects 🔗",
       "pv": {
         "edgeType": "Connects"
@@ -371,6 +393,8 @@
       "id": "global-sync-uses-sync",
       "fromNode": "global-sync-context",
       "toNode": "sync-engine",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "Uses ⬇️",
       "pv": {
         "edgeType": "Provides"
@@ -380,6 +404,8 @@
       "id": "terminal-connects-pty",
       "fromNode": "terminal-component",
       "toNode": "pty-websocket",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "Connects 🔗",
       "pv": {
         "edgeType": "Connects"
@@ -389,6 +415,8 @@
       "id": "session-syncs-storage",
       "fromNode": "session-context",
       "toNode": "local-storage",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "Syncs 🔄",
       "pv": {
         "edgeType": "Syncs"
@@ -398,6 +426,8 @@
       "id": "layout-manages-sidebar",
       "fromNode": "layout-context",
       "toNode": "file-tree-component",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "Manages 👤",
       "pv": {
         "edgeType": "Manages"
@@ -407,6 +437,8 @@
       "id": "session-contains-components",
       "fromNode": "session-context",
       "toNode": "prompt-input-component",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "Contains 📦",
       "pv": {
         "edgeType": "Contains"

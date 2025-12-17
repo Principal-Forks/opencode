@@ -207,6 +207,8 @@
       "id": "cli-to-sdk",
       "fromNode": "opencode-cli",
       "toNode": "sdk-js",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "Import ⬇️",
       "pv": {
         "edgeType": "Import"
@@ -216,6 +218,8 @@
       "id": "console-to-function",
       "fromNode": "console-app",
       "toNode": "console-function",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "API 🔌",
       "pv": {
         "edgeType": "API"
@@ -225,6 +229,8 @@
       "id": "desktop-to-function",
       "fromNode": "desktop-app",
       "toNode": "console-function",
+      "fromSide": "right",
+      "toSide": "left",
       "label": "API 🔌",
       "pv": {
         "edgeType": "API"
@@ -234,6 +240,8 @@
       "id": "web-to-function",
       "fromNode": "web-app",
       "toNode": "console-function",
+      "fromSide": "right",
+      "toSide": "left",
       "label": "API 🔌",
       "pv": {
         "edgeType": "API"
@@ -243,6 +251,8 @@
       "id": "console-to-enterprise",
       "fromNode": "console-app",
       "toNode": "enterprise",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "API 🔌",
       "pv": {
         "edgeType": "API"
@@ -252,6 +262,8 @@
       "id": "function-to-identity",
       "fromNode": "console-function",
       "toNode": "identity",
+      "fromSide": "right",
+      "toSide": "left",
       "label": "Auth 🔐",
       "pv": {
         "edgeType": "Auth"
@@ -261,6 +273,8 @@
       "id": "enterprise-to-identity",
       "fromNode": "enterprise",
       "toNode": "identity",
+      "fromSide": "right",
+      "toSide": "left",
       "label": "Auth 🔐",
       "pv": {
         "edgeType": "Auth"
@@ -270,6 +284,8 @@
       "id": "function-to-infra",
       "fromNode": "console-function",
       "toNode": "infra",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "Deploy 🚀",
       "pv": {
         "edgeType": "Deploy"
@@ -279,6 +295,8 @@
       "id": "enterprise-to-infra",
       "fromNode": "enterprise",
       "toNode": "infra",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "Deploy 🚀",
       "pv": {
         "edgeType": "Deploy"
@@ -288,6 +306,8 @@
       "id": "identity-to-infra",
       "fromNode": "identity",
       "toNode": "infra",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "Deploy 🚀",
       "pv": {
         "edgeType": "Deploy"
@@ -297,6 +317,8 @@
       "id": "slack-to-infra",
       "fromNode": "slack-app",
       "toNode": "infra",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "Deploy 🚀",
       "pv": {
         "edgeType": "Deploy"
@@ -306,6 +328,8 @@
       "id": "console-to-ui",
       "fromNode": "console-app",
       "toNode": "ui-package",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "Import ⬇️",
       "pv": {
         "edgeType": "Import"
@@ -315,6 +339,8 @@
       "id": "desktop-to-ui",
       "fromNode": "desktop-app",
       "toNode": "ui-package",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "Import ⬇️",
       "pv": {
         "edgeType": "Import"
@@ -324,6 +350,8 @@
       "id": "web-to-ui",
       "fromNode": "web-app",
       "toNode": "ui-package",
+      "fromSide": "bottom",
+      "toSide": "top",
       "label": "Import ⬇️",
       "pv": {
         "edgeType": "Import"
