@@ -72,13 +72,26 @@
       }
     },
     {
+      "id": "app-ui",
+      "type": "text",
+      "x": 187,
+      "y": 160,
+      "width": 160,
+      "height": 80,
+      "text": "App UI\n🌐\nShared web UI components",
+      "pv": {
+        "nodeType": "Frontend",
+        "shape": "rectangle"
+      }
+    },
+    {
       "id": "desktop-app",
       "type": "text",
       "x": 95,
-      "y": 159,
+      "y": 310,
       "width": 160,
       "height": 80,
-      "text": "Desktop App\n🌐\nNative desktop application",
+      "text": "Desktop App\n🌐\nTauri desktop wrapper",
       "pv": {
         "nodeType": "Frontend",
         "shape": "rectangle"
@@ -88,10 +101,10 @@
       "id": "web-app",
       "type": "text",
       "x": 279,
-      "y": 160,
+      "y": 310,
       "width": 160,
       "height": 80,
-      "text": "Web App\n🌐\nMain web interface",
+      "text": "Web App\n🌐\nStandalone web interface",
       "pv": {
         "nodeType": "Frontend",
         "shape": "rectangle"
@@ -130,9 +143,9 @@
       "y": 490,
       "width": 160,
       "height": 80,
-      "text": "Identity Service\n⚙️\nAuthentication & authorization",
+      "text": "Identity Assets\n📦\nBranding and logo assets",
       "pv": {
-        "nodeType": "Backend",
+        "nodeType": "Package",
         "shape": "rectangle"
       }
     },
@@ -226,19 +239,30 @@
       }
     },
     {
-      "id": "desktop-to-function",
+      "id": "desktop-embeds-app",
       "fromNode": "desktop-app",
-      "toNode": "console-function",
-      "fromSide": "right",
-      "toSide": "left",
-      "label": "API 🔌",
+      "toNode": "app-ui",
+      "fromSide": "top",
+      "toSide": "bottom",
+      "label": "Embeds ⬆️",
       "pv": {
-        "edgeType": "API"
+        "edgeType": "Import"
       }
     },
     {
-      "id": "web-to-function",
+      "id": "web-embeds-app",
       "fromNode": "web-app",
+      "toNode": "app-ui",
+      "fromSide": "top",
+      "toSide": "bottom",
+      "label": "Embeds ⬆️",
+      "pv": {
+        "edgeType": "Import"
+      }
+    },
+    {
+      "id": "app-to-function",
+      "fromNode": "app-ui",
       "toNode": "console-function",
       "fromSide": "right",
       "toSide": "left",
@@ -259,25 +283,25 @@
       }
     },
     {
-      "id": "function-to-identity",
-      "fromNode": "console-function",
+      "id": "console-uses-identity",
+      "fromNode": "console-app",
       "toNode": "identity",
-      "fromSide": "right",
-      "toSide": "left",
-      "label": "Auth 🔐",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "Import ⬇️",
       "pv": {
-        "edgeType": "Auth"
+        "edgeType": "Import"
       }
     },
     {
-      "id": "enterprise-to-identity",
-      "fromNode": "enterprise",
+      "id": "app-uses-identity",
+      "fromNode": "app-ui",
       "toNode": "identity",
-      "fromSide": "right",
-      "toSide": "left",
-      "label": "Auth 🔐",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "label": "Import ⬇️",
       "pv": {
-        "edgeType": "Auth"
+        "edgeType": "Import"
       }
     },
     {
@@ -336,19 +360,8 @@
       }
     },
     {
-      "id": "desktop-to-ui",
-      "fromNode": "desktop-app",
-      "toNode": "ui-package",
-      "fromSide": "bottom",
-      "toSide": "top",
-      "label": "Import ⬇️",
-      "pv": {
-        "edgeType": "Import"
-      }
-    },
-    {
-      "id": "web-to-ui",
-      "fromNode": "web-app",
+      "id": "app-to-ui",
+      "fromNode": "app-ui",
       "toNode": "ui-package",
       "fromSide": "bottom",
       "toSide": "top",
