@@ -1,0 +1,23 @@
+# Quality Lens Configuration for OpenCode
+# Bun monorepo with TypeScript, Prettier, Bun test
+
+lenses:
+  # Type checking - uses tsgo via turbo
+  # Note: tsgo output is compatible with tsc format
+  typescript: bun turbo typecheck
+
+  # Formatting - Prettier check (flags auto-added by CLI)
+  prettier: bun prettier --check .
+
+  # Testing - Bun test with coverage
+  bun-test: bun turbo opencode#test
+
+# Exclude build outputs, generated files, and infrastructure
+exclude:
+  - "**/dist/**"
+  - "**/node_modules/**"
+  - "**/.turbo/**"
+  - "**/.astro/**"
+  - ".sst/**"
+  - ".opencode/**"
+  - ".principal-views/**"
