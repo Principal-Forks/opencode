@@ -4,13 +4,6 @@ export type ClientOptions = {
   baseUrl: `${string}://${string}` | (string & {})
 }
 
-export type EventServerInstanceDisposed = {
-  type: "server.instance.disposed"
-  properties: {
-    directory: string
-  }
-}
-
 export type EventInstallationUpdated = {
   type: "installation.updated"
   properties: {
@@ -22,6 +15,34 @@ export type EventInstallationUpdateAvailable = {
   type: "installation.update-available"
   properties: {
     version: string
+  }
+}
+
+export type Project = {
+  id: string
+  worktree: string
+  vcs?: "git"
+  name?: string
+  icon?: {
+    url?: string
+    color?: string
+  }
+  time: {
+    created: number
+    updated: number
+    initialized?: number
+  }
+}
+
+export type EventProjectUpdated = {
+  type: "project.updated"
+  properties: Project
+}
+
+export type EventServerInstanceDisposed = {
+  type: "server.instance.disposed"
+  properties: {
+    directory: string
   }
 }
 
@@ -69,6 +90,7 @@ export type UserMessage = {
   tools?: {
     [key: string]: boolean
   }
+  variant?: string
 }
 
 export type ProviderAuthError = {
@@ -110,6 +132,9 @@ export type ApiError = {
       [key: string]: string
     }
     responseBody?: string
+    metadata?: {
+      [key: string]: string
+    }
   }
 }
 
@@ -126,6 +151,7 @@ export type AssistantMessage = {
   modelID: string
   providerID: string
   mode: string
+  agent: string
   path: {
     cwd: string
     root: string
@@ -395,6 +421,7 @@ export type Part =
       prompt: string
       description: string
       agent: string
+      command?: string
     }
   | ReasoningPart
   | FilePart
@@ -454,6 +481,40 @@ export type EventPermissionReplied = {
   }
 }
 
+export type EventFileEdited = {
+  type: "file.edited"
+  properties: {
+    file: string
+  }
+}
+
+export type Todo = {
+  /**
+   * Brief description of the task
+   */
+  content: string
+  /**
+   * Current status of the task: pending, in_progress, completed, cancelled
+   */
+  status: string
+  /**
+   * Priority level of the task: high, medium, low
+   */
+  priority: string
+  /**
+   * Unique identifier for the todo item
+   */
+  id: string
+}
+
+export type EventTodoUpdated = {
+  type: "todo.updated"
+  properties: {
+    sessionID: string
+    todos: Array<Todo>
+  }
+}
+
 export type SessionStatus =
   | {
       type: "idle"
@@ -490,37 +551,52 @@ export type EventSessionCompacted = {
   }
 }
 
-export type EventFileEdited = {
-  type: "file.edited"
+export type EventTuiPromptAppend = {
+  type: "tui.prompt.append"
   properties: {
-    file: string
+    text: string
   }
 }
 
-export type Todo = {
-  /**
-   * Brief description of the task
-   */
-  content: string
-  /**
-   * Current status of the task: pending, in_progress, completed, cancelled
-   */
-  status: string
-  /**
-   * Priority level of the task: high, medium, low
-   */
-  priority: string
-  /**
-   * Unique identifier for the todo item
-   */
-  id: string
+export type EventTuiCommandExecute = {
+  type: "tui.command.execute"
+  properties: {
+    command:
+      | "session.list"
+      | "session.new"
+      | "session.share"
+      | "session.interrupt"
+      | "session.compact"
+      | "session.page.up"
+      | "session.page.down"
+      | "session.half.page.up"
+      | "session.half.page.down"
+      | "session.first"
+      | "session.last"
+      | "prompt.clear"
+      | "prompt.submit"
+      | "agent.cycle"
+      | string
+  }
 }
 
-export type EventTodoUpdated = {
-  type: "todo.updated"
+export type EventTuiToastShow = {
+  type: "tui.toast.show"
   properties: {
-    sessionID: string
-    todos: Array<Todo>
+    title?: string
+    message: string
+    variant: "info" | "success" | "warning" | "error"
+    /**
+     * Duration in milliseconds
+     */
+    duration?: number
+  }
+}
+
+export type EventMcpToolsChanged = {
+  type: "mcp.tools.changed"
+  properties: {
+    server: string
   }
 }
 
@@ -554,6 +630,7 @@ export type Session = {
     created: number
     updated: number
     compacting?: number
+    archived?: number
   }
   revert?: {
     messageID: string
@@ -615,48 +692,6 @@ export type EventVcsBranchUpdated = {
   }
 }
 
-export type EventTuiPromptAppend = {
-  type: "tui.prompt.append"
-  properties: {
-    text: string
-  }
-}
-
-export type EventTuiCommandExecute = {
-  type: "tui.command.execute"
-  properties: {
-    command:
-      | "session.list"
-      | "session.new"
-      | "session.share"
-      | "session.interrupt"
-      | "session.compact"
-      | "session.page.up"
-      | "session.page.down"
-      | "session.half.page.up"
-      | "session.half.page.down"
-      | "session.first"
-      | "session.last"
-      | "prompt.clear"
-      | "prompt.submit"
-      | "agent.cycle"
-      | string
-  }
-}
-
-export type EventTuiToastShow = {
-  type: "tui.toast.show"
-  properties: {
-    title?: string
-    message: string
-    variant: "info" | "success" | "warning" | "error"
-    /**
-     * Duration in milliseconds
-     */
-    duration?: number
-  }
-}
-
 export type Pty = {
   id: string
   title: string
@@ -703,10 +738,18 @@ export type EventServerConnected = {
   }
 }
 
+export type EventGlobalDisposed = {
+  type: "global.disposed"
+  properties: {
+    [key: string]: unknown
+  }
+}
+
 export type Event =
-  | EventServerInstanceDisposed
   | EventInstallationUpdated
   | EventInstallationUpdateAvailable
+  | EventProjectUpdated
+  | EventServerInstanceDisposed
   | EventLspClientDiagnostics
   | EventLspUpdated
   | EventMessageUpdated
@@ -715,11 +758,15 @@ export type Event =
   | EventMessagePartRemoved
   | EventPermissionUpdated
   | EventPermissionReplied
+  | EventFileEdited
+  | EventTodoUpdated
   | EventSessionStatus
   | EventSessionIdle
   | EventSessionCompacted
-  | EventFileEdited
-  | EventTodoUpdated
+  | EventTuiPromptAppend
+  | EventTuiCommandExecute
+  | EventTuiToastShow
+  | EventMcpToolsChanged
   | EventCommandExecuted
   | EventSessionCreated
   | EventSessionUpdated
@@ -728,29 +775,16 @@ export type Event =
   | EventSessionError
   | EventFileWatcherUpdated
   | EventVcsBranchUpdated
-  | EventTuiPromptAppend
-  | EventTuiCommandExecute
-  | EventTuiToastShow
   | EventPtyCreated
   | EventPtyUpdated
   | EventPtyExited
   | EventPtyDeleted
   | EventServerConnected
+  | EventGlobalDisposed
 
 export type GlobalEvent = {
   directory: string
   payload: Event
-}
-
-export type Project = {
-  id: string
-  worktree: string
-  vcsDir?: string
-  vcs?: "git"
-  time: {
-    created: number
-    initialized?: number
-  }
 }
 
 export type BadRequestError = {
@@ -821,6 +855,14 @@ export type KeybindsConfig = {
    */
   session_timeline?: string
   /**
+   * Fork session from message
+   */
+  session_fork?: string
+  /**
+   * Rename session
+   */
+  session_rename?: string
+  /**
    * Share current session
    */
   session_share?: string
@@ -861,6 +903,14 @@ export type KeybindsConfig = {
    */
   messages_last?: string
   /**
+   * Navigate to next message
+   */
+  messages_next?: string
+  /**
+   * Navigate to previous message
+   */
+  messages_previous?: string
+  /**
    * Navigate to last user message
    */
   messages_last_user?: string
@@ -897,6 +947,14 @@ export type KeybindsConfig = {
    */
   model_cycle_recent_reverse?: string
   /**
+   * Next favorite model
+   */
+  model_cycle_favorite?: string
+  /**
+   * Previous favorite model
+   */
+  model_cycle_favorite_reverse?: string
+  /**
    * List available commands
    */
   command_list?: string
@@ -913,13 +971,13 @@ export type KeybindsConfig = {
    */
   agent_cycle_reverse?: string
   /**
+   * Cycle model variants
+   */
+  variant_cycle?: string
+  /**
    * Clear input field
    */
   input_clear?: string
-  /**
-   * Forward delete
-   */
-  input_forward_delete?: string
   /**
    * Paste from clipboard
    */
@@ -932,6 +990,138 @@ export type KeybindsConfig = {
    * Insert newline in input
    */
   input_newline?: string
+  /**
+   * Move cursor left in input
+   */
+  input_move_left?: string
+  /**
+   * Move cursor right in input
+   */
+  input_move_right?: string
+  /**
+   * Move cursor up in input
+   */
+  input_move_up?: string
+  /**
+   * Move cursor down in input
+   */
+  input_move_down?: string
+  /**
+   * Select left in input
+   */
+  input_select_left?: string
+  /**
+   * Select right in input
+   */
+  input_select_right?: string
+  /**
+   * Select up in input
+   */
+  input_select_up?: string
+  /**
+   * Select down in input
+   */
+  input_select_down?: string
+  /**
+   * Move to start of line in input
+   */
+  input_line_home?: string
+  /**
+   * Move to end of line in input
+   */
+  input_line_end?: string
+  /**
+   * Select to start of line in input
+   */
+  input_select_line_home?: string
+  /**
+   * Select to end of line in input
+   */
+  input_select_line_end?: string
+  /**
+   * Move to start of visual line in input
+   */
+  input_visual_line_home?: string
+  /**
+   * Move to end of visual line in input
+   */
+  input_visual_line_end?: string
+  /**
+   * Select to start of visual line in input
+   */
+  input_select_visual_line_home?: string
+  /**
+   * Select to end of visual line in input
+   */
+  input_select_visual_line_end?: string
+  /**
+   * Move to start of buffer in input
+   */
+  input_buffer_home?: string
+  /**
+   * Move to end of buffer in input
+   */
+  input_buffer_end?: string
+  /**
+   * Select to start of buffer in input
+   */
+  input_select_buffer_home?: string
+  /**
+   * Select to end of buffer in input
+   */
+  input_select_buffer_end?: string
+  /**
+   * Delete line in input
+   */
+  input_delete_line?: string
+  /**
+   * Delete to end of line in input
+   */
+  input_delete_to_line_end?: string
+  /**
+   * Delete to start of line in input
+   */
+  input_delete_to_line_start?: string
+  /**
+   * Backspace in input
+   */
+  input_backspace?: string
+  /**
+   * Delete character in input
+   */
+  input_delete?: string
+  /**
+   * Undo in input
+   */
+  input_undo?: string
+  /**
+   * Redo in input
+   */
+  input_redo?: string
+  /**
+   * Move word forward in input
+   */
+  input_word_forward?: string
+  /**
+   * Move word backward in input
+   */
+  input_word_backward?: string
+  /**
+   * Select word forward in input
+   */
+  input_select_word_forward?: string
+  /**
+   * Select word backward in input
+   */
+  input_select_word_backward?: string
+  /**
+   * Delete word forward in input
+   */
+  input_delete_word_forward?: string
+  /**
+   * Delete word backward in input
+   */
+  input_delete_word_backward?: string
   /**
    * Previous history item
    */
@@ -949,9 +1139,44 @@ export type KeybindsConfig = {
    */
   session_child_cycle_reverse?: string
   /**
+   * Go to parent session
+   */
+  session_parent?: string
+  /**
    * Suspend terminal
    */
   terminal_suspend?: string
+  /**
+   * Toggle terminal title
+   */
+  terminal_title_toggle?: string
+  /**
+   * Toggle tips on home screen
+   */
+  tips_toggle?: string
+}
+
+/**
+ * Log level
+ */
+export type LogLevel = "DEBUG" | "INFO" | "WARN" | "ERROR"
+
+/**
+ * Server configuration for opencode serve and web commands
+ */
+export type ServerConfig = {
+  /**
+   * Port to listen on
+   */
+  port?: number
+  /**
+   * Hostname to listen on
+   */
+  hostname?: string
+  /**
+   * Enable mDNS service discovery
+   */
+  mdns?: boolean
 }
 
 export type AgentConfig = {
@@ -985,6 +1210,13 @@ export type AgentConfig = {
       | {
           [key: string]: "ask" | "allow" | "deny"
         }
+    skill?:
+      | "ask"
+      | "allow"
+      | "deny"
+      | {
+          [key: string]: "ask" | "allow" | "deny"
+        }
     webfetch?: "ask" | "allow" | "deny"
     doom_loop?: "ask" | "allow" | "deny"
     external_directory?: "ask" | "allow" | "deny"
@@ -1011,6 +1243,13 @@ export type AgentConfig = {
           | {
               [key: string]: "ask" | "allow" | "deny"
             }
+        skill?:
+          | "ask"
+          | "allow"
+          | "deny"
+          | {
+              [key: string]: "ask" | "allow" | "deny"
+            }
         webfetch?: "ask" | "allow" | "deny"
         doom_loop?: "ask" | "allow" | "deny"
         external_directory?: "ask" | "allow" | "deny"
@@ -1028,11 +1267,17 @@ export type ProviderConfig = {
     [key: string]: {
       id?: string
       name?: string
+      family?: string
       release_date?: string
       attachment?: boolean
       reasoning?: boolean
       temperature?: boolean
       tool_call?: boolean
+      interleaved?:
+        | true
+        | {
+            field: "reasoning_content" | "reasoning_details"
+          }
       cost?: {
         input: number
         output: number
@@ -1171,6 +1416,7 @@ export type Config = {
    */
   theme?: string
   keybinds?: KeybindsConfig
+  logLevel?: LogLevel
   /**
    * TUI specific settings
    */
@@ -1193,6 +1439,7 @@ export type Config = {
      */
     diff_style?: "auto" | "stacked"
   }
+  server?: ServerConfig
   /**
    * Command configuration, see https://opencode.ai/docs/commands
    */
@@ -1239,6 +1486,10 @@ export type Config = {
    */
   small_model?: string
   /**
+   * Default agent to use when none is specified. Must be a primary agent. Falls back to 'build' if not set or if the specified agent is invalid.
+   */
+  default_agent?: string
+  /**
    * Custom username to display in conversations instead of system username
    */
   username?: string
@@ -1258,6 +1509,9 @@ export type Config = {
     build?: AgentConfig
     general?: AgentConfig
     explore?: AgentConfig
+    title?: AgentConfig
+    summary?: AgentConfig
+    compaction?: AgentConfig
     [key: string]: AgentConfig | undefined
   }
   /**
@@ -1317,6 +1571,13 @@ export type Config = {
       | {
           [key: string]: "ask" | "allow" | "deny"
         }
+    skill?:
+      | "ask"
+      | "allow"
+      | "deny"
+      | {
+          [key: string]: "ask" | "allow" | "deny"
+        }
     webfetch?: "ask" | "allow" | "deny"
     doom_loop?: "ask" | "allow" | "deny"
     external_directory?: "ask" | "allow" | "deny"
@@ -1329,6 +1590,16 @@ export type Config = {
      * Enterprise URL
      */
     url?: string
+  }
+  compaction?: {
+    /**
+     * Enable automatic compaction when context is full (default: true)
+     */
+    auto?: boolean
+    /**
+     * Enable pruning of old tool outputs (default: true)
+     */
+    prune?: boolean
   }
   experimental?: {
     hook?: {
@@ -1364,6 +1635,10 @@ export type Config = {
      * Tools that should only be available to primary agents.
      */
     primary_tools?: Array<string>
+    /**
+     * Continue the agent loop when a tool call is denied
+     */
+    continue_loop_on_deny?: boolean
   }
 }
 
@@ -1378,6 +1653,7 @@ export type ToolListItem = {
 export type ToolList = Array<ToolListItem>
 
 export type Path = {
+  home: string
   state: string
   config: string
   worktree: string
@@ -1429,6 +1705,7 @@ export type SubtaskPartInput = {
   prompt: string
   description: string
   agent: string
+  command?: string
 }
 
 export type Command = {
@@ -1440,6 +1717,11 @@ export type Command = {
   subtask?: boolean
 }
 
+export type Variant = {
+  disabled: boolean
+  [key: string]: unknown | boolean
+}
+
 export type Model = {
   id: string
   providerID: string
@@ -1449,6 +1731,7 @@ export type Model = {
     npm: string
   }
   name: string
+  family?: string
   capabilities: {
     temperature: boolean
     reasoning: boolean
@@ -1468,6 +1751,11 @@ export type Model = {
       video: boolean
       pdf: boolean
     }
+    interleaved:
+      | boolean
+      | {
+          field: "reasoning_content" | "reasoning_details"
+        }
   }
   cost: {
     input: number
@@ -1495,6 +1783,10 @@ export type Model = {
   }
   headers: {
     [key: string]: string
+  }
+  release_date: string
+  variants?: {
+    [key: string]: Variant
   }
 }
 
@@ -1573,13 +1865,18 @@ export type Agent = {
   name: string
   description?: string
   mode: "subagent" | "primary" | "all"
-  builtIn: boolean
+  native?: boolean
+  hidden?: boolean
+  default?: boolean
   topP?: number
   temperature?: number
   color?: string
   permission: {
     edit: "ask" | "allow" | "deny"
     bash: {
+      [key: string]: "ask" | "allow" | "deny"
+    }
+    skill: {
       [key: string]: "ask" | "allow" | "deny"
     }
     webfetch?: "ask" | "allow" | "deny"
@@ -1663,6 +1960,25 @@ export type WellKnownAuth = {
 
 export type Auth = OAuth | ApiAuth | WellKnownAuth
 
+export type GlobalHealthData = {
+  body?: never
+  path?: never
+  query?: never
+  url: "/global/health"
+}
+
+export type GlobalHealthResponses = {
+  /**
+   * Health information
+   */
+  200: {
+    healthy: true
+    version: string
+  }
+}
+
+export type GlobalHealthResponse = GlobalHealthResponses[keyof GlobalHealthResponses]
+
 export type GlobalEventData = {
   body?: never
   path?: never
@@ -1678,6 +1994,22 @@ export type GlobalEventResponses = {
 }
 
 export type GlobalEventResponse = GlobalEventResponses[keyof GlobalEventResponses]
+
+export type GlobalDisposeData = {
+  body?: never
+  path?: never
+  query?: never
+  url: "/global/dispose"
+}
+
+export type GlobalDisposeResponses = {
+  /**
+   * Global disposed
+   */
+  200: boolean
+}
+
+export type GlobalDisposeResponse = GlobalDisposeResponses[keyof GlobalDisposeResponses]
 
 export type ProjectListData = {
   body?: never
@@ -1714,6 +2046,45 @@ export type ProjectCurrentResponses = {
 }
 
 export type ProjectCurrentResponse = ProjectCurrentResponses[keyof ProjectCurrentResponses]
+
+export type ProjectUpdateData = {
+  body?: {
+    name?: string
+    icon?: {
+      url?: string
+      color?: string
+    }
+  }
+  path: {
+    projectID: string
+  }
+  query?: {
+    directory?: string
+  }
+  url: "/project/{projectID}"
+}
+
+export type ProjectUpdateErrors = {
+  /**
+   * Bad request
+   */
+  400: BadRequestError
+  /**
+   * Not found
+   */
+  404: NotFoundError
+}
+
+export type ProjectUpdateError = ProjectUpdateErrors[keyof ProjectUpdateErrors]
+
+export type ProjectUpdateResponses = {
+  /**
+   * Updated project information
+   */
+  200: Project
+}
+
+export type ProjectUpdateResponse = ProjectUpdateResponses[keyof ProjectUpdateResponses]
 
 export type PtyListData = {
   body?: never
@@ -2191,6 +2562,9 @@ export type SessionGetResponse = SessionGetResponses[keyof SessionGetResponses]
 export type SessionUpdateData = {
   body?: {
     title?: string
+    time?: {
+      archived?: number
+    }
   }
   path: {
     sessionID: string
@@ -2494,6 +2868,7 @@ export type SessionSummarizeData = {
   body?: {
     providerID: string
     modelID: string
+    auto?: boolean
   }
   path: {
     /**
@@ -2578,10 +2953,11 @@ export type SessionPromptData = {
     }
     agent?: string
     noReply?: boolean
-    system?: string
     tools?: {
       [key: string]: boolean
     }
+    system?: string
+    variant?: string
     parts: Array<TextPartInput | FilePartInput | AgentPartInput | SubtaskPartInput>
   }
   path: {
@@ -2664,6 +3040,94 @@ export type SessionMessageResponses = {
 
 export type SessionMessageResponse = SessionMessageResponses[keyof SessionMessageResponses]
 
+export type PartDeleteData = {
+  body?: never
+  path: {
+    /**
+     * Session ID
+     */
+    sessionID: string
+    /**
+     * Message ID
+     */
+    messageID: string
+    /**
+     * Part ID
+     */
+    partID: string
+  }
+  query?: {
+    directory?: string
+  }
+  url: "/session/{sessionID}/message/{messageID}/part/{partID}"
+}
+
+export type PartDeleteErrors = {
+  /**
+   * Bad request
+   */
+  400: BadRequestError
+  /**
+   * Not found
+   */
+  404: NotFoundError
+}
+
+export type PartDeleteError = PartDeleteErrors[keyof PartDeleteErrors]
+
+export type PartDeleteResponses = {
+  /**
+   * Successfully deleted part
+   */
+  200: boolean
+}
+
+export type PartDeleteResponse = PartDeleteResponses[keyof PartDeleteResponses]
+
+export type PartUpdateData = {
+  body?: Part
+  path: {
+    /**
+     * Session ID
+     */
+    sessionID: string
+    /**
+     * Message ID
+     */
+    messageID: string
+    /**
+     * Part ID
+     */
+    partID: string
+  }
+  query?: {
+    directory?: string
+  }
+  url: "/session/{sessionID}/message/{messageID}/part/{partID}"
+}
+
+export type PartUpdateErrors = {
+  /**
+   * Bad request
+   */
+  400: BadRequestError
+  /**
+   * Not found
+   */
+  404: NotFoundError
+}
+
+export type PartUpdateError = PartUpdateErrors[keyof PartUpdateErrors]
+
+export type PartUpdateResponses = {
+  /**
+   * Successfully updated part
+   */
+  200: Part
+}
+
+export type PartUpdateResponse = PartUpdateResponses[keyof PartUpdateResponses]
+
 export type SessionPromptAsyncData = {
   body?: {
     messageID?: string
@@ -2673,10 +3137,11 @@ export type SessionPromptAsyncData = {
     }
     agent?: string
     noReply?: boolean
-    system?: string
     tools?: {
       [key: string]: boolean
     }
+    system?: string
+    variant?: string
     parts: Array<TextPartInput | FilePartInput | AgentPartInput | SubtaskPartInput>
   }
   path: {
@@ -2720,6 +3185,7 @@ export type SessionCommandData = {
     model?: string
     arguments: string
     command: string
+    variant?: string
   }
   path: {
     /**
@@ -2906,6 +3372,24 @@ export type PermissionRespondResponses = {
 
 export type PermissionRespondResponse = PermissionRespondResponses[keyof PermissionRespondResponses]
 
+export type PermissionListData = {
+  body?: never
+  path?: never
+  query?: {
+    directory?: string
+  }
+  url: "/permission"
+}
+
+export type PermissionListResponses = {
+  /**
+   * List of pending permissions
+   */
+  200: Array<Permission>
+}
+
+export type PermissionListResponse = PermissionListResponses[keyof PermissionListResponses]
+
 export type CommandListData = {
   body?: never
   path?: never
@@ -2971,11 +3455,17 @@ export type ProviderListResponses = {
         [key: string]: {
           id: string
           name: string
+          family?: string
           release_date: string
           attachment: boolean
           reasoning: boolean
           temperature: boolean
           tool_call: boolean
+          interleaved?:
+            | true
+            | {
+                field: "reasoning_content" | "reasoning_details"
+              }
           cost?: {
             input: number
             output: number
@@ -3502,6 +3992,46 @@ export type McpAuthAuthenticateResponses = {
 }
 
 export type McpAuthAuthenticateResponse = McpAuthAuthenticateResponses[keyof McpAuthAuthenticateResponses]
+
+export type McpConnectData = {
+  body?: never
+  path: {
+    name: string
+  }
+  query?: {
+    directory?: string
+  }
+  url: "/mcp/{name}/connect"
+}
+
+export type McpConnectResponses = {
+  /**
+   * MCP server connected successfully
+   */
+  200: boolean
+}
+
+export type McpConnectResponse = McpConnectResponses[keyof McpConnectResponses]
+
+export type McpDisconnectData = {
+  body?: never
+  path: {
+    name: string
+  }
+  query?: {
+    directory?: string
+  }
+  url: "/mcp/{name}/disconnect"
+}
+
+export type McpDisconnectResponses = {
+  /**
+   * MCP server disconnected successfully
+   */
+  200: boolean
+}
+
+export type McpDisconnectResponse = McpDisconnectResponses[keyof McpDisconnectResponses]
 
 export type LspStatusData = {
   body?: never
